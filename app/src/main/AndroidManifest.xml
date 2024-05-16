@@ -21,6 +21,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".StartActivity" android:label="start_activity"/>
+        <activity android:name=".RecordActivity" android:label="record_activity"/>
     </application>
 
 </manifest>
