@@ -5,7 +5,12 @@
     android:layout_height="match_parent">
 
     <TextView
+        android:id="@+id/dateTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="start"/>
+        android:layout_gravity="center"
+        android:text="text"
+        android:textStyle="bold"
+        android:textSize="24sp" />
+
 </LinearLayout>
