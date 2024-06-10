@@ -10,4 +10,5 @@
         android:id="@+id/addWorkoutEdtText"
         android:hint="운동 이름을 입력하세요"/>
 
+
 </LinearLayout>

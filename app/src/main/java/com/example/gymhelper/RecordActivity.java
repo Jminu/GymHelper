@@ -11,6 +11,5 @@ public class RecordActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.record_layout);
 
-
     }
 }
