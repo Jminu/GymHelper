@@ -59,8 +59,12 @@ public class StartActivity extends Activity {
 
         if(requestCode == ADD_WORKOUT_REQUEST_CODE && resultCode == RESULT_OK && data != null) {
             String workout = data.getStringExtra("workout"); //key값이 workout인 객체 찾아옴
+            int weight = data.getIntExtra("weight", 0);
+
+
             if(workout != null) {
-                workoutList.add(workout); //리스트에 넣음
+                String workoutWithWeight = workout + "-" + weight + " kg";
+                workoutList.add(workoutWithWeight); //리스트에 넣음
                 adapter.notifyDataSetChanged();
             }
         }
