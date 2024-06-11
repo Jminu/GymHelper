@@ -48,7 +48,7 @@ public class StartActivity extends Activity {
             @Override
             public void onClick(View v) {
                 Intent addWorkOutIntent = new Intent(getApplicationContext(), AddWorkOutActivity.class);
-                startActivityForResult(addWorkOutIntent, ADD_WORKOUT_REQUEST_CODE);
+                startActivityForResult(addWorkOutIntent, ADD_WORKOUT_REQUEST_CODE); //AddWorkOutActivity에서 값 전달받음
             }
         });
     }

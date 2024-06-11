@@ -28,10 +28,19 @@
             android:id="@+id/addWorkoutBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
+            android:layout_gravity="center|right"
             android:backgroundTint="@color/black"
-            android:textColor="#FFFFFF"
-            android:text="운동 추가하기" />
+            android:text="운동 추가하기"
+            android:textColor="#FFFFFF" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|left"
+            android:text="운동 종료"
+            android:id="@+id/finishWorkOutBtn"
+            android:backgroundTint="@color/black"
+            android:textColor="@color/white"/>
     </FrameLayout>
 
 </LinearLayout>
