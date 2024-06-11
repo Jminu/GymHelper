@@ -35,7 +35,7 @@
         android:layout_gravity="bottom|center"
         android:backgroundTint="@color/black"
         android:text="운동시작"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/white"
         android:id="@+id/startBtn"/>
 
     <Button
@@ -44,8 +44,8 @@
         android:layout_gravity="center"
         android:gravity="center"
         android:backgroundTint="@color/black"
+        android:textColor="@color/white"
         android:text="기록 보기"
-        android:textColor="#FFFFFF"
         android:id="@+id/recordBtn"/>
 
     <Button
@@ -53,9 +53,9 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:gravity="center"
-        android:backgroundTint="@color/black"
+        android:backgroundTint="@android:color/black"
+        android:textColor="@android:color/white"
         android:text="주변 헬스장"
-        android:textColor="#FFFFFF"
         android:id="@+id/findGym"/>
 
 </LinearLayout>

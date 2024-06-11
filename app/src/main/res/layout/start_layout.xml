@@ -15,12 +15,14 @@
 
     <ListView
         android:layout_width="match_parent"
-        android:layout_height="552dp" />
+        android:layout_height="552dp"
+        android:id="@+id/workOutList"/>
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom">
+        android:layout_gravity="bottom"
+        android:padding="16dp">
 
         <Button
             android:id="@+id/addWorkoutBtn"
@@ -28,7 +30,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:backgroundTint="@color/black"
-            android:text="운동 추가" />
+            android:textColor="#FFFFFF"
+            android:text="운동 추가하기" />
     </FrameLayout>
 
 </LinearLayout>

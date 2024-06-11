@@ -10,5 +10,17 @@
         android:id="@+id/addWorkoutEdtText"
         android:hint="운동 이름을 입력하세요"/>
 
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|bottom"
+            android:text="입력한 운동을 추가하기"
+            android:backgroundTint="@color/black"
+            android:textColor="@color/white"
+            android:id="@+id/addWorkoutBtn_dialog"/>
+    </FrameLayout>
 
 </LinearLayout>
