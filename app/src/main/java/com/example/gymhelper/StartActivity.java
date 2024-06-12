@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -19,10 +20,13 @@ import com.example.gymhelper.WorkOut;
 
 public class StartActivity extends Activity {
     Button addWorkOutBtn;
+    Button countPlusBtn;
+    Button countMinusBtn;
     TextView dateTextView;
     ArrayAdapter<String> adapter;
     ArrayList<String> workoutList;
     ListView listView;
+    int selectedItemPosition = -1;
 
 
     private static final int ADD_WORKOUT_REQUEST_CODE = 1;
@@ -39,6 +43,10 @@ public class StartActivity extends Activity {
         //운동 추가 버튼
         addWorkOutBtn = (Button) findViewById(R.id.addWorkoutBtn);
 
+        //세트 수 버튼 증감 버튼
+        countPlusBtn = (Button) findViewById(R.id.plusBtn);
+        countMinusBtn = (Button) findViewById(R.id.minusBtn);
+
         //운동 리스트 뷰
         listView = (ListView) findViewById(R.id.workOutList);
 
@@ -54,6 +62,15 @@ public class StartActivity extends Activity {
                 startActivityForResult(addWorkOutIntent, ADD_WORKOUT_REQUEST_CODE); //AddWorkOutActivity에서 값 전달받음
             }
         });
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                selectedItemPosition = position;
+                view.setSelected(true);
+            }
+        });
+
     }
 
     @Override
