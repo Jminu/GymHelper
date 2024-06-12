@@ -15,6 +15,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
+import com.example.gymhelper.WorkOut;
 
 public class StartActivity extends Activity {
     Button addWorkOutBtn;
@@ -60,13 +61,18 @@ public class StartActivity extends Activity {
         super.onActivityResult(requestCode, resultCode, data);
 
         if(requestCode == ADD_WORKOUT_REQUEST_CODE && resultCode == RESULT_OK && data != null) {
-            String workout = data.getStringExtra("workout"); //key값이 workout인 객체 찾아옴
-            int reps = data.getIntExtra("reps", 0);
-            int weight = data.getIntExtra("weight", 0);
+            String workoutName = data.getStringExtra("workout"); //key값이 workout인 객체 찾아옴
+            int reps = data.getIntExtra("reps", 0); //''
+            int weight = data.getIntExtra("weight", 0); //''
 
+            if(workoutName != null) {
+                WorkOut workout = new WorkOut(workoutName, reps, weight);
 
-            if(workout != null) {
-                String workoutWithWeight = workout + "-" + weight + "kg" + "-" + reps +"reps";
+                workout.setName(workoutName);
+                workout.setReps(reps);
+                workout.setWeight(weight);
+
+                String workoutWithWeight = workout.getWorkInfo();
                 workoutList.add(workoutWithWeight); //리스트에 넣음
                 adapter.notifyDataSetChanged();
             }

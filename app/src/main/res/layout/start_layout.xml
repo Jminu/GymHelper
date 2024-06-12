@@ -18,11 +18,37 @@
         android:layout_height="552dp"
         android:id="@+id/workOutList"/>
 
-    <FrameLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        android:padding="16dp">
+        android:padding="16dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/finishWorkOutBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|left"
+            android:backgroundTint="@color/black"
+            android:text="운동 종료"
+            android:textColor="@color/white" />
+
+        <Button
+            android:id="@+id/button3"
+            android:layout_width="74dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="-"
+            android:textSize="24sp" />
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="74dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textSize="24sp"
+            android:text="+" />
 
         <Button
             android:id="@+id/addWorkoutBtn"
@@ -33,14 +59,6 @@
             android:text="운동 추가하기"
             android:textColor="#FFFFFF" />
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center|left"
-            android:text="운동 종료"
-            android:id="@+id/finishWorkOutBtn"
-            android:backgroundTint="@color/black"
-            android:textColor="@color/white"/>
-    </FrameLayout>
+    </LinearLayout>
 
 </LinearLayout>
