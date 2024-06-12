@@ -22,6 +22,8 @@ public class StartActivity extends Activity {
     ArrayAdapter<String> adapter;
     ArrayList<String> workoutList;
     ListView listView;
+
+
     private static final int ADD_WORKOUT_REQUEST_CODE = 1;
     @Override
         protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -59,14 +61,17 @@ public class StartActivity extends Activity {
 
         if(requestCode == ADD_WORKOUT_REQUEST_CODE && resultCode == RESULT_OK && data != null) {
             String workout = data.getStringExtra("workout"); //key값이 workout인 객체 찾아옴
+            int reps = data.getIntExtra("reps", 0);
             int weight = data.getIntExtra("weight", 0);
 
 
             if(workout != null) {
-                String workoutWithWeight = workout + "-" + weight + " kg";
+                String workoutWithWeight = workout + "-" + weight + "kg" + "-" + reps +"reps";
                 workoutList.add(workoutWithWeight); //리스트에 넣음
                 adapter.notifyDataSetChanged();
             }
         }
     }
+
+
 }

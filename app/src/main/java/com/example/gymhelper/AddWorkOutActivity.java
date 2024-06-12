@@ -20,6 +20,7 @@ StartActivity.java에 운동이름 전달(intent사용)
 public class AddWorkOutActivity extends Activity {
     EditText addWorkOutText; //입력한 운동
     EditText addWeight; //운동 중량 입력
+    EditText addReps; //반복수
     Button addBtnDialog; //버튼 누르면 입력한 운동이 StartActivity로 전달
 
     @Override
@@ -29,6 +30,7 @@ public class AddWorkOutActivity extends Activity {
 
         addWorkOutText = (EditText) findViewById(R.id.addWorkoutEdtText); //운동 입력 텍스트
         addWeight = (EditText) findViewById(R.id.weight); //운동 중량 텍스트
+        addReps = (EditText) findViewById(R.id.reps); //반복 수
         addBtnDialog = (Button) findViewById(R.id.addWorkoutBtn_dialog); //운동 입력 완료 버튼
 
         addBtnDialog.setOnClickListener(new View.OnClickListener() {
@@ -38,13 +40,17 @@ public class AddWorkOutActivity extends Activity {
                 //운동 이름을 workout 스트링 객체에 저장
                 String workout = addWorkOutText.getText().toString().trim();
                 String weightText = addWeight.getText().toString();
+                String repsText = addReps.getText().toString();
+
                 int weight = Integer.parseInt(weightText);
+                int reps = Integer.parseInt(repsText);
 
                 if(!workout.isEmpty()) {
                     //인텐트에 운동 이름 전달
                     Intent intent = new Intent();
                     intent.putExtra("workout", workout); //"workout은 key, workout은 value
                     intent.putExtra("weight", weight); //중량도 전달
+                    intent.putExtra("reps", reps); //반복 수 전달
                     setResult(RESULT_OK, intent);
                     Toast.makeText(AddWorkOutActivity.this, "추가가 완료되었습니다.", Toast.LENGTH_SHORT).show();
                     finish();

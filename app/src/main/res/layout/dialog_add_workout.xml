@@ -16,6 +16,12 @@
         android:id="@+id/weight"
         android:hint="중량을 입력하세요"/>
 
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/reps"
+        android:hint="반복수를 입력하세요"/>
+
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
