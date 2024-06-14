@@ -10,7 +10,7 @@ public class WorkOut {
         this.name = name;
         this.weight = weight;
         this.reps = reps;
-        this.count = 0;
+        this.count = 0; //초기 count값은 0
     }
 
     public String getName() {

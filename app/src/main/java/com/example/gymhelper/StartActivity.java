@@ -23,8 +23,8 @@ public class StartActivity extends Activity {
     Button countPlusBtn;
     Button countMinusBtn;
     TextView dateTextView;
-    ArrayAdapter<String> adapter;
-    ArrayList<String> workoutList;
+    WorkoutAdapter adapter; //커스텀 어댑터 생성
+    ArrayList<WorkOut> workoutList;
     ListView listView;
     int selectedItemPosition = -1;
 
@@ -52,9 +52,11 @@ public class StartActivity extends Activity {
 
         //운동 리스트
         workoutList = new ArrayList<>();
-        adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, workoutList);
-        listView.setAdapter(adapter);
+        //adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, workoutList);
+        adapter = new WorkoutAdapter(this, workoutList); //커스텀 어댑터 적용
+        listView.setAdapter(adapter); //커스텀 어댑터를 리스트뷰에 적용
 
+        //운동 추가 버튼 누르면
         addWorkOutBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -63,14 +65,39 @@ public class StartActivity extends Activity {
             }
         });
 
+        //리스트뷰 요소 클릭하면 활성화되고, 위치 기억함
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 selectedItemPosition = position;
+                adapter.setSelectedPosition(position);
                 view.setSelected(true);
             }
         });
 
+        //'+'버튼 누르면
+        countPlusBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(selectedItemPosition != -1) {
+                    WorkOut selectedWorkout = workoutList.get(selectedItemPosition);
+                    selectedWorkout.setCount(selectedWorkout.getCount() + 1);
+                    adapter.notifyDataSetChanged();
+                }
+            }
+        });
+
+        //'-'버튼 누르면
+        countMinusBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(selectedItemPosition != -1) {
+                    WorkOut selectedWorkout = workoutList.get(selectedItemPosition);
+                    selectedWorkout.setCount(selectedWorkout.getCount() - 1);
+                    adapter.notifyDataSetChanged();
+                }
+            }
+        });
     }
 
     @Override
@@ -79,22 +106,14 @@ public class StartActivity extends Activity {
 
         if(requestCode == ADD_WORKOUT_REQUEST_CODE && resultCode == RESULT_OK && data != null) {
             String workoutName = data.getStringExtra("workout"); //key값이 workout인 객체 찾아옴
-            int reps = data.getIntExtra("reps", 0); //''
-            int weight = data.getIntExtra("weight", 0); //''
+            int reps = data.getIntExtra("reps", 0); //key값이 reps인 객체 찾아옴
+            int weight = data.getIntExtra("weight", 0); //key값이 weight인 객체 찾아옴
 
             if(workoutName != null) {
-                WorkOut workout = new WorkOut(workoutName, reps, weight);
-
-                workout.setName(workoutName);
-                workout.setReps(reps);
-                workout.setWeight(weight);
-
-                String workoutWithWeight = workout.getWorkInfo();
-                workoutList.add(workoutWithWeight); //리스트에 넣음
+                WorkOut workout = new WorkOut(workoutName, reps, weight); //찾아온 것들로 객체 운동객체 생성
+                workoutList.add(workout); //리스트에 넣음
                 adapter.notifyDataSetChanged();
             }
         }
     }
-
-
 }
