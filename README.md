@@ -9,7 +9,7 @@
 ### 운동을 추가하세요!
 ![스크린샷 2024-06-16 오전 3 09 05](https://github.com/Jminu/GymHelper/assets/99392443/138aab09-979a-4b6b-b094-f6d354906d9a)
 ### 추가한 운동을 길게 누르면 유투브로 이동, 검색을 합니다
-![스크린샷 2024-06-16 오전 3 26 51](https://github.com/Jminu/GymHelper/assets/99392443/fdd86875-f356-4d45-95a4-7b3ebed404c9)
+![스크린샷 2024-06-16 오전 3 28 45](https://github.com/Jminu/GymHelper/assets/99392443/92c40e98-3dae-41a7-be64-a35af403be76)
 ![스크린샷 2024-06-16 오전 3 27 12](https://github.com/Jminu/GymHelper/assets/99392443/f45fb2f6-0e25-4f5e-9b79-319a7fb3fb3a)
 ### 기록을 확인하세요!
 ![스크린샷 2024-06-16 오전 3 10 52](https://github.com/Jminu/GymHelper/assets/99392443/4c7c2901-f78a-4010-acbe-9d8b1cf330b1)
