@@ -76,6 +76,10 @@ public class StartActivity extends Activity {
             public void onClick(View v) {
                 saveWorKOutDataToFile(); //파일에 저장
                 Toast.makeText(getApplicationContext(), "운동를 저장합니다", Toast.LENGTH_SHORT).show();
+
+                Intent intent = new Intent(StartActivity.this, MainActivity.class);
+                startActivity(intent);
+                finish();
             }
         });
 
@@ -136,7 +140,7 @@ public class StartActivity extends Activity {
         String filename = "workout_data.txt";
         FileOutputStream fos = null; //쓰기 스트림 생성
         try {
-            fos = openFileOutput(filename, Context.MODE_PRIVATE); //쓰기 스트림으로 파일을 쓰기상태로 염
+            fos = openFileOutput(filename, Context.MODE_APPEND); //쓰기 스트림으로 파일을 쓰기상태로 염, APPEND모드로 파일에 이어서 작성함
             StringBuilder data = new StringBuilder();
             String currentDate = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date());
 
