@@ -141,7 +141,7 @@ public class StartActivity extends Activity {
             int sets = data.getIntExtra("sets", 0); //key값이 sets인 객체 찾아옴
 
             if(workoutName != null) {
-                WorkOut workout = new WorkOut(workoutName, reps, weight, sets); //찾아온 것들로 객체 운동객체 생성
+                WorkOut workout = new WorkOut(workoutName, weight, reps, sets); //찾아온 것들로 객체 운동객체 생성
                 workoutList.add(workout); //리스트에 넣음
                 adapter.notifyDataSetChanged();
             }
