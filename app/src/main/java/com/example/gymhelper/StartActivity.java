@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.net.Uri;
 
 import androidx.annotation.Nullable;
 
@@ -93,6 +94,17 @@ public class StartActivity extends Activity {
             }
         });
 
+        //리스트뷰의 요소를 길게 누르면 -> 유투브 검색됨
+        listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                WorkOut workout = (WorkOut) parent.getItemAtPosition(position);
+                String workoutName = workout.getName();
+                searchOnYouTube(workoutName);
+                return true;
+            }
+        });
+
         //'+'버튼 누르면
         countPlusBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -160,5 +172,11 @@ public class StartActivity extends Activity {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    protected void searchOnYouTube(String query) {
+        String youtubeSearchUrl = "https://www.youtube.com/results?search_query=" + Uri.encode(query);
+        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(youtubeSearchUrl));
+        startActivity(intent);
     }
 }
