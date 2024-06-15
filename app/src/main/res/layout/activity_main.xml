@@ -48,14 +48,4 @@
         android:text="기록 보기"
         android:id="@+id/recordBtn"/>
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:backgroundTint="@android:color/black"
-        android:textColor="@android:color/white"
-        android:text="주변 헬스장"
-        android:id="@+id/findGym"/>
-
 </LinearLayout>

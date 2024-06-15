@@ -14,7 +14,6 @@ import androidx.core.view.WindowInsetsCompat;
 public class MainActivity extends AppCompatActivity {
     Button startBtn;
     Button recordBtn;
-    Button findGymBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +28,6 @@ public class MainActivity extends AppCompatActivity {
 
         startBtn = (Button) findViewById(R.id.startBtn);
         recordBtn = (Button) findViewById(R.id.recordBtn);
-        findGymBtn = (Button) findViewById(R.id.findGym);
 
         startBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -44,14 +42,6 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent recordIntent = new Intent(getApplicationContext(), RecordActivity.class);
                 startActivity(recordIntent);
-            }
-        });
-
-        findGymBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent findIntent = new Intent(getApplicationContext(), MapsActivity.class);
-                startActivity(findIntent);
             }
         });
     }
