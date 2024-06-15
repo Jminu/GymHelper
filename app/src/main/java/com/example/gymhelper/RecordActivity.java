@@ -57,8 +57,8 @@ public class RecordActivity extends Activity {
                         k = 1;
                     }
 
-                    //읽은 날짜 아래로 추가 3줄을 더 읽어야함(운동 정보)
-                    for(int i = 0; i < 4; i++) {
+                    //읽은 날짜 아래로 추가 5줄을 더 읽어야함(운동 정보)
+                    for(int i = 0; i < 5; i++) {
                         if((line = reader.readLine()) != null) {
                             data.append(line).append("\n");
                         }

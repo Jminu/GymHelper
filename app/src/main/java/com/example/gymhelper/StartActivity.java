@@ -138,9 +138,10 @@ public class StartActivity extends Activity {
             String workoutName = data.getStringExtra("workout"); //key값이 workout인 객체 찾아옴
             int reps = data.getIntExtra("reps", 0); //key값이 reps인 객체 찾아옴
             int weight = data.getIntExtra("weight", 0); //key값이 weight인 객체 찾아옴
+            int sets = data.getIntExtra("sets", 0); //key값이 sets인 객체 찾아옴
 
             if(workoutName != null) {
-                WorkOut workout = new WorkOut(workoutName, reps, weight); //찾아온 것들로 객체 운동객체 생성
+                WorkOut workout = new WorkOut(workoutName, reps, weight, sets); //찾아온 것들로 객체 운동객체 생성
                 workoutList.add(workout); //리스트에 넣음
                 adapter.notifyDataSetChanged();
             }
@@ -161,8 +162,9 @@ public class StartActivity extends Activity {
                 WorkOut workout = workoutList.get(i);
                 data.append("Date : ").append(currentDate).append("\n");
                 data.append("Workout: ").append(workout.getName()).append("\n");
-                data.append("Reps: ").append(workout.getReps()).append("\n");
                 data.append("Weight: ").append(workout.getWeight()).append("\n");
+                data.append("Reps: ").append(workout.getReps()).append("\n");
+                data.append("Sets: ").append(workout.getSets()).append("\n");
                 data.append("Count: ").append(workout.getCount()).append("\n");
                 data.append("\n");
             }
