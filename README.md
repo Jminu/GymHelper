@@ -1,2 +1,1 @@
-💪🏿
-# Gym Helper
+# 💪🏿Gym Helper
