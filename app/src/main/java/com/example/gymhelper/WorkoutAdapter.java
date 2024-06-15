@@ -32,6 +32,14 @@ public class WorkoutAdapter extends ArrayAdapter<WorkOut> {
         infoTextView.setText(workout.getWorkInfo());
         countTextView.setText("수행 횟수 : " + String.valueOf(workout.getCount())); //getCount는 int를 반환하니까 String으로 바꿔줘야함
 
+        //count와 reps가 같아지면 '수행완료'됐다는 뜻으로 초록색으로 바꿈
+        if(workout.getReps() == workout.getCount()) {
+            countTextView.setTextColor(getContext().getResources().getColor(android.R.color.holo_green_dark));
+        }
+        else {
+            countTextView.setTextColor(getContext().getResources().getColor(android.R.color.holo_red_dark));
+        }
+
         if(position == selectedPosition) {
             convertView.setBackgroundColor(getContext().getResources().getColor(android.R.color.holo_blue_light));
         }
