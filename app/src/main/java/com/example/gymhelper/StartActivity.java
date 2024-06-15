@@ -99,7 +99,7 @@ public class StartActivity extends Activity {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
                 WorkOut workout = (WorkOut) parent.getItemAtPosition(position);
-                String workoutName = workout.getName();
+                String workoutName = workout.getName() + "방법";
                 searchOnYouTube(workoutName);
                 return true;
             }
