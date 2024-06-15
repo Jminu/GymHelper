@@ -1,6 +1,7 @@
 package com.example.gymhelper;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -9,9 +10,11 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
+import java.io.FileOutputStream;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -20,6 +23,7 @@ import com.example.gymhelper.WorkOut;
 
 public class StartActivity extends Activity {
     Button addWorkOutBtn;
+    Button finishWorkOutBtn;
     Button countPlusBtn;
     Button countMinusBtn;
     TextView dateTextView;
@@ -28,20 +32,20 @@ public class StartActivity extends Activity {
     ListView listView;
     int selectedItemPosition = -1;
 
-
     private static final int ADD_WORKOUT_REQUEST_CODE = 1;
     @Override
         protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.start_layout);
 
-        //오늘 날짜 표시
+        //오늘 날짜 표시(출력 전용)
         String currentDate = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date());
         dateTextView = (TextView) findViewById(R.id.dateTextView);
         dateTextView.setText(currentDate);
 
         //운동 추가 버튼
         addWorkOutBtn = (Button) findViewById(R.id.addWorkoutBtn);
+        finishWorkOutBtn = (Button) findViewById(R.id.finishWorkOutBtn);
 
         //세트 수 버튼 증감 버튼
         countPlusBtn = (Button) findViewById(R.id.plusBtn);
@@ -62,6 +66,16 @@ public class StartActivity extends Activity {
             public void onClick(View v) {
                 Intent addWorkOutIntent = new Intent(getApplicationContext(), AddWorkOutActivity.class);
                 startActivityForResult(addWorkOutIntent, ADD_WORKOUT_REQUEST_CODE); //AddWorkOutActivity에서 값 전달받음
+            }
+        });
+
+        /*
+        * 운동종료버튼 누르면 리스트뷰에 있던 모든 운동 요소들이 날짜와 함께 파일에 저장*/
+        finishWorkOutBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                saveWorKOutDataToFile(); //파일에 저장
+                Toast.makeText(getApplicationContext(), "운동를 저장합니다", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -114,6 +128,33 @@ public class StartActivity extends Activity {
                 workoutList.add(workout); //리스트에 넣음
                 adapter.notifyDataSetChanged();
             }
+        }
+    }
+
+    //오늘 한 운동 정보를 파일에 저장하는 메소드
+    private void saveWorKOutDataToFile() {
+        String filename = "workout_data.txt";
+        FileOutputStream fos = null; //쓰기 스트림 생성
+        try {
+            fos = openFileOutput(filename, Context.MODE_PRIVATE); //쓰기 스트림으로 파일을 쓰기상태로 염
+            StringBuilder data = new StringBuilder();
+            String currentDate = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date());
+
+            //리스트크기만큼 반복
+            for (int i = 0; i < workoutList.size(); i++) {
+                WorkOut workout = workoutList.get(i);
+                data.append("Date : ").append(currentDate).append("\n");
+                data.append("Workout: ").append(workout.getName()).append("\n");
+                data.append("Reps: ").append(workout.getReps()).append("\n");
+                data.append("Weight: ").append(workout.getWeight()).append("\n");
+                data.append("Count: ").append(workout.getCount()).append("\n");
+                data.append("\n");
+            }
+
+            fos.write(data.toString().getBytes());
+            fos.close();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 }

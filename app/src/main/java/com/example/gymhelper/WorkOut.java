@@ -1,5 +1,7 @@
 package com.example.gymhelper;
-
+/*
+* 이곳에는, 운동 정보class
+* 운동 이름, 무게, 반복수, count*/
 public class WorkOut {
     private String name;
     private int weight;
