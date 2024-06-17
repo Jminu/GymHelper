@@ -123,7 +123,12 @@ public class StartActivity extends Activity {
             public void onClick(View v) {
                 if(selectedItemPosition != -1) {
                     WorkOut selectedWorkout = workoutList.get(selectedItemPosition);
-                    selectedWorkout.setCount(selectedWorkout.getCount() - 1);
+                    if(selectedWorkout.getCount() == 0) { //만약 count가 0이면 더 빼면 안됨 : 음수가 되버림
+                        selectedWorkout.setCount(selectedWorkout.getCount());
+                    }
+                    else {
+                        selectedWorkout.setCount(selectedWorkout.getCount() - 1);
+                    }
                     adapter.notifyDataSetChanged();
                 }
             }
