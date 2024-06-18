@@ -99,7 +99,7 @@ public class StartActivity extends Activity {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
                 WorkOut workout = (WorkOut) parent.getItemAtPosition(position);
-                String workoutName = workout.getName() + "방법";
+                String workoutName = workout.getName() + " 방법";
                 searchOnYouTube(workoutName);
                 return true;
             }
@@ -181,9 +181,9 @@ public class StartActivity extends Activity {
         }
     }
 
-    protected void searchOnYouTube(String query) {
-        String youtubeSearchUrl = "https://www.youtube.com/results?search_query=" + Uri.encode(query);
-        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(youtubeSearchUrl));
+    protected void searchOnYouTube(String workout_name) {
+        String youtubeSearchUrl = "https://www.youtube.com/results?search_query=" + Uri.encode(workout_name);
+        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(youtubeSearchUrl)); //새 액티비티 띄움
         startActivity(intent);
     }
 }
